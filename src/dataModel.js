@@ -1,15 +1,19 @@
-
+import mobx, {observable, computed,action} from "mobx";
 class StudentInfoFactory {
 
+  @observable
+  _studentsInfo = {};
   constructor() {
-    this._studentsInfo = {};
+   // this._studentsInfo = {};
     this.makeData();
   }
 
+  @computed
   get studentsInfo() {
     return this._studentsInfo;
   }
 
+  @action
   makeData()  {
     this._studentsInfo.headers = [
       { courseId: 1000, courseName: "Basic Programming" },
@@ -20,6 +24,7 @@ class StudentInfoFactory {
     this._studentsInfo.students.push({ studentId: 101, name: "Jan Olsen", grades: [{ grade: "7" }, { grade: "10" }, {}] });
     this._studentsInfo.students.push({ studentId: 102, name: "Gitte Poulsen", grades: [{ grade: "7" }, { grade: "7" }, {}] });
     this._studentsInfo.students.push({ studentId: 103, name: "John McDonald", grades: [{ grade: "10" }, {}, { grade: "7" }] })
+
   }
 }
 
